@@ -10,7 +10,7 @@ const nunito = Nunito_Sans({
 })
 
 export const metadata = {
-  title: 'Contries',
+  title: 'Countries',
   description: 'App built with NextJS',
 }
 
@@ -20,11 +20,9 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
       <body className={`${nunito.variable} font-sans antialiased`}>
         <Providers>
           <div className="flex min-h-screen flex-col">
-            <header className="shadow">
+            <header className="border-b">
               <div className="container mx-auto flex justify-between p-4">
-                <div className="text-xl font-extrabold">
-                  Where in the world?
-                </div>
+                <h1 className="text-xl font-extrabold">Where in the world?</h1>
                 <ThemeToggler />
               </div>
             </header>
