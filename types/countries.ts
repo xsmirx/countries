@@ -1,25 +1,17 @@
-export interface Ara {
-  official: string
-  common: string
-}
-
-export interface NativeName {
-  ara: Ara
-}
-
 export interface Name {
   common: string
   official: string
-  nativeName: NativeName
 }
 
-export interface MRU {
-  name: string
-  symbol: string
+export interface Names extends Name {
+  nativeName: Translations
 }
 
 export interface Currencies {
-  MRU: MRU
+  [key: string]: {
+    name: string
+    symbol: string
+  }
 }
 
 export interface Idd {
@@ -30,169 +22,17 @@ export interface Idd {
 export type Region = 'Africa' | 'Americas' | 'Asia' | 'Europe' | 'Oceania'
 
 export interface Languages {
-  ara: string
-}
-
-export interface Ara2 {
-  official: string
-  common: string
-}
-
-export interface Bre {
-  official: string
-  common: string
-}
-
-export interface Ces {
-  official: string
-  common: string
-}
-
-export interface Cym {
-  official: string
-  common: string
-}
-
-export interface Deu {
-  official: string
-  common: string
-}
-
-export interface Est {
-  official: string
-  common: string
-}
-
-export interface Fin {
-  official: string
-  common: string
-}
-
-export interface Fra {
-  official: string
-  common: string
-}
-
-export interface Hrv {
-  official: string
-  common: string
-}
-
-export interface Hun {
-  official: string
-  common: string
-}
-
-export interface Ita {
-  official: string
-  common: string
-}
-
-export interface Jpn {
-  official: string
-  common: string
-}
-
-export interface Kor {
-  official: string
-  common: string
-}
-
-export interface Nld {
-  official: string
-  common: string
-}
-
-export interface Per {
-  official: string
-  common: string
-}
-
-export interface Pol {
-  official: string
-  common: string
-}
-
-export interface Por {
-  official: string
-  common: string
-}
-
-export interface Rus {
-  official: string
-  common: string
-}
-
-export interface Slk {
-  official: string
-  common: string
-}
-
-export interface Spa {
-  official: string
-  common: string
-}
-
-export interface Swe {
-  official: string
-  common: string
-}
-
-export interface Tur {
-  official: string
-  common: string
-}
-
-export interface Urd {
-  official: string
-  common: string
-}
-
-export interface Zho {
-  official: string
-  common: string
+  [key: string]: string
 }
 
 export interface Translations {
-  ara: Ara2
-  bre: Bre
-  ces: Ces
-  cym: Cym
-  deu: Deu
-  est: Est
-  fin: Fin
-  fra: Fra
-  hrv: Hrv
-  hun: Hun
-  ita: Ita
-  jpn: Jpn
-  kor: Kor
-  nld: Nld
-  per: Per
-  pol: Pol
-  por: Por
-  rus: Rus
-  slk: Slk
-  spa: Spa
-  swe: Swe
-  tur: Tur
-  urd: Urd
-  zho: Zho
+  [key: string]: Name
 }
-
-export interface Eng {
-  f: string
-  m: string
-}
-
-export interface Fra2 {
-  f: string
-  m: string
-}
-
 export interface Demonyms {
-  eng: Eng
-  fra: Fra2
+  [key: string]: {
+    f: string
+    m: string
+  }
 }
 
 export interface Maps {
@@ -201,7 +41,7 @@ export interface Maps {
 }
 
 export interface Gini {
-  2014: number
+  [year: number]: number
 }
 
 export interface Car {
@@ -212,6 +52,7 @@ export interface Car {
 export interface Flags {
   png: string
   svg: string
+  alt: string
 }
 
 export interface CoatOfArms {
@@ -224,7 +65,7 @@ export interface CapitalInfo {
 }
 
 export interface CountryResp {
-  name: Name
+  name: Names
   tld: string[]
   cca2: string
   ccn3: string
