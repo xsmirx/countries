@@ -71,24 +71,22 @@ export const Countries: FC<Props> = ({countries: allCauntries}) => {
       <div className="grid grid-cols-4 gap-10 self-center pt-10">
         {countries.map(country => (
           <Link
-            href="/"
-            key={country.fifa}
+            href={`/${country.cca3}`}
+            key={country.cca3}
             className="min-h-full rounded-md ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
           >
             <Card className="flex min-h-full flex-col overflow-hidden">
               <div className="relative p-[33.5%]">
                 <Image
-                  alt={country.fifa + ' flag'}
-                  src={country.flags.png}
+                  alt={country.flags.alt || country.cca3 + ' flag'}
+                  src={country.flags.svg}
                   fill
                   className="object-contain object-top"
                 />
               </div>
-
               <CardHeader className="flex-auto">
                 <CardTitle>{country.name.official}</CardTitle>
               </CardHeader>
-
               <CardContent className="h-full">
                 <p>
                   <span className="font-semibold">Population: </span>
