@@ -43,7 +43,7 @@ export const Countries: FC<Props> = ({countries: allCauntries}) => {
 
   return (
     <>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between gap-4 sm:flex-row">
         <Input
           type="text"
           placeholder="Search for a countriy..."
@@ -51,11 +51,11 @@ export const Countries: FC<Props> = ({countries: allCauntries}) => {
           onChange={e => {
             setValue(e.target.value)
           }}
-          className="w-[30%]"
+          className="w-full sm:w-80"
         />
 
         <Select onValueChange={handleChangeRegion}>
-          <SelectTrigger className="w-[180px]">
+          <SelectTrigger className="w-full sm:w-60">
             <SelectValue placeholder="Filter by region" />
           </SelectTrigger>
           <SelectContent>
@@ -68,7 +68,7 @@ export const Countries: FC<Props> = ({countries: allCauntries}) => {
         </Select>
       </div>
 
-      <div className="grid grid-cols-4 gap-10 self-center pt-10">
+      <div className="grid gap-4 self-center pt-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10 lg:pt-10 xl:grid-cols-4">
         {countries.map(country => (
           <Link
             href={`/${country.cca3}`}

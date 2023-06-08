@@ -2,6 +2,7 @@ import {Nunito_Sans} from 'next/font/google'
 import {Providers} from '@/components/Providers'
 import './globals.css'
 import {ThemeToggler} from '@/components/ThemeToggler'
+import Link from 'next/link'
 
 const nunito = Nunito_Sans({
   weight: ['300', '600', '800'],
@@ -22,7 +23,12 @@ export default function RootLayout({children}: {children: React.ReactNode}) {
           <div className="flex min-h-screen flex-col">
             <header className="border-b">
               <div className="container mx-auto flex justify-between p-4">
-                <h1 className="text-xl font-extrabold">Where in the world?</h1>
+                <Link href="/">
+                  <h2 className="text-xl font-extrabold">
+                    Where in the world?
+                  </h2>
+                </Link>
+
                 <ThemeToggler />
               </div>
             </header>

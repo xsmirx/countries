@@ -1,7 +1,6 @@
-import Image from 'next/image'
 import {CountryResp} from '@/types/countries'
-import {Card, CardContent, CardHeader, CardTitle} from '@/components/ui/card'
 import {TypographyH1} from '@/components/ui/typography'
+import Image from 'next/image'
 
 type Props = {
   params: {cca3: string}
@@ -12,18 +11,16 @@ export default async function ({params: {cca3}}: Props) {
   const json: CountryResp[] = await response.json()
   const country = json[0]
 
-  console.log(country)
-
   const languages = Object.keys(country.languages)
   const currencies = Object.keys(country.currencies)
 
   return (
     <>
-      <TypographyH1 className="mb-10 text-center">
+      <TypographyH1 className="mb-4 text-center">
         {country.name.official}
       </TypographyH1>
-      <div className="flex items-center justify-center gap-10">
-        <div className="relative h-[200px] w-[300px]">
+      <div className="flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-10">
+        <div className="relative w-full py-[33.5%] sm:h-[200px] sm:w-[300px] sm:p-0">
           <Image
             src={country.flags.svg}
             alt={country.cca3 + ' flag'}
@@ -32,17 +29,17 @@ export default async function ({params: {cca3}}: Props) {
           />
         </div>
         <div className="flex flex-col gap-4">
-          <p>
+          <div>
             <span className="font-semibold">Native Name: </span>
-            <div className="inline-flex flex-col">
+            <p className="inline-flex flex-col">
               {languages.map(language => (
-                <span>
+                <span key={language}>
                   {country.name.nativeName[language]?.official}
                   {` (${language})`}
                 </span>
               ))}
-            </div>
-          </p>
+            </p>
+          </div>
           <p>
             <span className="font-semibold">Population: </span>
             {country.population.toLocaleString('en-US')}
@@ -63,22 +60,22 @@ export default async function ({params: {cca3}}: Props) {
             <span className="font-semibold">Top Lavel Domain: </span>
             {country.tld}
           </p>
-          <p>
+          <div>
             <span className="font-semibold">Currencies: </span>
-            <div className="inline-flex gap-1">
+            <p className="inline-flex gap-1">
               {currencies.map(currency => (
-                <span>{currency}</span>
+                <span key={currency}>{currency}</span>
               ))}
-            </div>
-          </p>
-          <p>
+            </p>
+          </div>
+          <div>
             <span className="font-semibold">Languages: </span>
-            <div className="inline-flex gap-1">
+            <p className="inline-flex gap-1">
               {languages.map(language => (
-                <span>{language}</span>
+                <span key={language}>{language}</span>
               ))}
-            </div>
-          </p>
+            </p>
+          </div>
         </div>
       </div>
     </>
