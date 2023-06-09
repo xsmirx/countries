@@ -1,6 +1,7 @@
 import {CountryResp} from '@/types/countries'
 import {TypographyH1} from '@/components/ui/typography'
 import Image from 'next/image'
+import {Badge} from '@/components/ui/badge'
 
 type Props = {
   params: {cca3: string}
@@ -75,6 +76,14 @@ export default async function ({params: {cca3}}: Props) {
                 <span key={language}>{language}</span>
               ))}
             </p>
+          </div>
+          <div>
+            <span className="font-semibold">Border Countries: </span>
+            <div className="inline-flex flex-wrap gap-1">
+              {country.borders.map(country => (
+                <Badge>{country}</Badge>
+              ))}
+            </div>
           </div>
         </div>
       </div>
