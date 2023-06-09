@@ -2,7 +2,6 @@ import {CountryResp} from '@/types/countries'
 import {TypographyH1} from '@/components/ui/typography'
 import Image from 'next/image'
 import {Badge} from '@/components/ui/badge'
-import {AspectRatio} from '@/components/ui/aspect-ratio'
 
 type Props = {
   params: {cca3: string}
