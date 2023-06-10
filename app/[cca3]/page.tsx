@@ -7,7 +7,7 @@ type Props = {
   params: {cca3: string}
 }
 
-export default async function ({params: {cca3}}: Props) {
+export default async function CountryPage({params: {cca3}}: Props) {
   const response = await fetch(`https://restcountries.com/v3.1/alpha/${cca3}`)
   const json: CountryResp[] = await response.json()
   const country = json[0]
@@ -85,7 +85,7 @@ export default async function ({params: {cca3}}: Props) {
             <p className="font-semibold">Border Countries: </p>
             <div className="inline-flex flex-wrap gap-1">
               {country.borders.map(country => (
-                <Badge>{country}</Badge>
+                <Badge key={country}>{country}</Badge>
               ))}
             </div>
           </div>
